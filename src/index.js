@@ -7,17 +7,13 @@ const { GraphQLServer } = require('graphql-yoga')
 const typeDefs = `
 type Query{
     info:String!
-    users: [User!]
-    user(id:ID!):User!
+    feed:[Link!]
 }
 
-type Mutation {
-    createUser(id:String!): User!
-}
-
-type User{
+type Link {
     id:ID!
-    name:String!
+    description:String!
+    url:String!
 }
 `;
 
@@ -25,7 +21,7 @@ type User{
 const resolvers = {
   Query: {
     info: () => `this is Graphql API`,
-    users:()=>{id='users', name='name'}
+    feed:()=>{id='users', description='description', url="url"}
   }
 }
 

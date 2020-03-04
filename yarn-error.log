@@ -1,0 +1,41 @@
+Arguments: 
+  /home/dev/.nvm/versions/node/v11.15.0/bin/node /home/dev/.nvm/versions/node/v11.15.0/bin/yarn add graphql-yofa
+
+PATH: 
+  /home/dev/.nvm/versions/node/v11.15.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/dev/Android/Sdk/emulator:/home/dev/Android/Sdk/tools:/home/dev/Android/Sdk/tools/bin:/home/dev/Android/Sdk/platform-tools:/home/dev/Android/Sdk/emulator:/home/dev/Android/Sdk/tools:/home/dev/Android/Sdk/tools/bin:/home/dev/Android/Sdk/platform-tools
+
+Yarn version: 
+  1.19.1
+
+Node version: 
+  11.15.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/graphql-yofa: Not found
+      at Request.params.callback [as _callback] (/home/dev/.nvm/versions/node/v11.15.0/lib/node_modules/yarn/lib/cli.js:66926:18)
+      at Request.self.callback (/home/dev/.nvm/versions/node/v11.15.0/lib/node_modules/yarn/lib/cli.js:140564:22)
+      at Request.emit (events.js:193:13)
+      at Request.<anonymous> (/home/dev/.nvm/versions/node/v11.15.0/lib/node_modules/yarn/lib/cli.js:141536:10)
+      at Request.emit (events.js:193:13)
+      at IncomingMessage.<anonymous> (/home/dev/.nvm/versions/node/v11.15.0/lib/node_modules/yarn/lib/cli.js:141458:12)
+      at Object.onceWrapper (events.js:281:20)
+      at IncomingMessage.emit (events.js:198:15)
+      at endReadableNT (_stream_readable.js:1139:12)
+      at processTicksAndRejections (internal/process/task_queues.js:81:17)
+
+npm manifest: 
+  {
+    "name": "hackernews-node",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

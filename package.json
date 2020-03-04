@@ -5,7 +5,11 @@
   "repository": "https://github.com/imshaz/graphql-node.git",
   "author": "imshaz <imshazbangash@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
   "dependencies": {
-    "graphql-yoga": "^1.18.3"
+    "graphql-yoga": "^1.18.3",
+    "nodemon": "^2.0.2"
   }
 }

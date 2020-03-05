@@ -21,17 +21,12 @@ const resolvers = {
             return item.id===id
           }
         )
-
-
-        if(index===-1) return null
-
-       let item= links.splice(index, 1)
-
-        return item[0]
+      // if(index===-1) return null
+      // let item= links.splice(index, 1)
+      return links[index]
     }
   },
   Mutation:{
-
     post:(parent, args)=>{
       const link = {
         id: uuid(),
@@ -40,6 +35,38 @@ const resolvers = {
       }
       links.push(link)
       return link
+    },
+
+    updateLink:(parent, args)=>{
+      const {id, description, url}=args
+
+      let index = links.findIndex(item=>{
+        return item.id===id
+      })
+
+      if(index===-1) return null
+
+      if(description){
+          links[index].description=description
+      }
+      if(url){
+        links[index].url=url
+      }
+
+      return links[index]
+
+    },
+
+    removeLink:(parent, args)=>{
+      const {id}= args
+      let index = links.findIndex(item=>{
+
+        return item.id===id
+      })
+
+      if(index===-1) return null
+
+      return links.splice(index, 1)[0]
     }
   }
 }

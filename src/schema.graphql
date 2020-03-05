@@ -5,11 +5,13 @@ type Query {
 }
 
 type Mutation {
-  post(url: String!, description: String!): Link
+  post(url: String!, description: String!): Link!
+  removeLink(id:ID!):Link
+  updateLink(id:ID!, description:String, url:String):Link
 }
 
 type Link {
-  id: ID
+  id: ID!
   description: String!
   url: String!
 }

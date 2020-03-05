@@ -1,0 +1,11 @@
+# Specifies the HTTP endpoint of your Prisma API.
+#endpoint: ''
+endpoint: https://eu1.prisma.sh/shax/hackernews-node/dev
+
+# Defines your models, each model is mapped to the database as a table.
+datamodel: datamodel.graphql
+
+# Specifies the language and directory for the generated Prisma client.
+generate:
+  - generator: javascript-client
+    output: ../src/generated/prisma-client/

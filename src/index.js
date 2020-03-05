@@ -2,6 +2,26 @@
 
 const { GraphQLServer } = require('graphql-yoga')
 const { v4: uuid } = require('uuid');
+const { prisma } = require('./generated/prisma-client')
+
+async function main() {
+
+  // Create a new link
+  const newLink = await prisma.createLink({ 
+   
+    url: 'www.prisma.io',
+    description: 'Prisma replaces traditional ORMs',
+  })
+  console.log(`Created new link: ${newLink.url} (ID: ${newLink.id})`)
+
+  // Read all links from the database and print them to the console
+  const allLinks = await prisma.links()
+  console.log(allLinks)
+}
+
+main().catch(e => console.error(e))
+
+
 let links = [{
   id: '9a3bce97-ff86-4a2c-823e-aabbd28e853a',
   url: 'www.howtographql.com',
@@ -14,27 +34,18 @@ let links = [{
 const resolvers = {
   Query: {
     info: () => `this is Graphql API`,
-    feed:()=>links,
-    link: (parent, args, context, info)=>{
-      const {id} =args
-        let index = links.findIndex(item=>{
-            return item.id===id
-          }
-        )
-      // if(index===-1) return null
-      // let item= links.splice(index, 1)
-      return links[index]
+    feed:(root, args, context, info)=>context.prisma.links(),
+    link: (root, args, context, info)=>{
+      return context.prisma.link()
     }
   },
   Mutation:{
-    post:(parent, args)=>{
-      const link = {
-        id: uuid(),
-        description:args.description, 
-        url:args.url 
-      }
-      links.push(link)
-      return link
+    post:(root, args, context,info)=>{
+     
+      return context.prisma.createLink({
+        url:args.url, 
+        description:args.description
+      })
     },
 
     updateLink:(parent, args)=>{
